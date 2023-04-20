@@ -1,9 +1,19 @@
+import Link from "next/link";
+
 function HomePage() {
-    console.log("Render")
+    console.log("HeomPage Render")
     return (
-        <main>
-            <h1>Test Next Js</h1>
-        </main>
+        <>
+            <header>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link href="/about">About</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </>
     )
 }
 export default HomePage;
