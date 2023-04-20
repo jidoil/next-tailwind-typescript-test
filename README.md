@@ -97,3 +97,37 @@ _app.js에서 임포트 해주면 적용된다.
 ```
 component 아래에 jsx를 추가하면
 해당 컴포넌트에게만 적용되는 css를 지정할 수 있다.
+
+##### public
+이미지 등등의 파일들을 넣는 기본 디렉토리.
+```javascript
+ <Head>
+    <link rel="icon" href="/icons/favicon.ico" />
+</Head>
+```
+이미지등의 파일을 읽으려고 할때 디폴트로 참조한다.
+
+
+
+### 파일 읽기
+```javascript
+import { readFile } from 'fs/promises';
+
+export async function getPost(slug) {
+    const source = await readFile(`content/posts/${slug}.md`, 'utf8');
+    const html = marked(source);
+    return {
+        body: html,
+    };
+}
+```
+
+- npm install marked
+- npm install gray-matter
+
+```javascript
+import matter from 'gray-matter';
+import marked from 'marked';
+```
+
+마크다운 파일 포스트용 모듈
