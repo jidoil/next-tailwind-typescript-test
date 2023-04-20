@@ -14,7 +14,9 @@ function AboutPage() {
 }
 export default AboutPage;
 ```
-![스크린샷 2023-04-20 162711.png](..%2F..%2FPictures%2FScreenshots%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-04-20%20162711.png)
+Pages
+   -> about.js
+페이지스 디렉토리 하부의 파일명을 라우팅 주소로 자동 인식한다.
 
 
 ##### 링크 Link 모듈
@@ -22,8 +24,8 @@ export default AboutPage;
    import Link from "next/link";
     <Link href="/about">About</Link>
 ```
-
-
+추가적인 요청을 하지 않고 렌더링된 페이지를 클라이언트가 연결해준다.
+따라서 nextjs는 가장 빠른 클라이언트 네비게이팅과 서버사이드렌더링의 장점을 갖을 수 있다.
 
 2. 실행
 
