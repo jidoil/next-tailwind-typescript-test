@@ -2,7 +2,9 @@
   "name": "next-teset",
   "private": true,
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "start": "next start",
+    "build": "next build"
   },
   "dependencies": {
     "next": "^13.3.0",
