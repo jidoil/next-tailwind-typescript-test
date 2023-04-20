@@ -80,3 +80,20 @@ styles/globals.css
 _app.js에서 임포트 해주면 적용된다.
 
 
+```javascript
+<style jsx>{`
+              ul {
+                list-style-type: none ;
+                padding: 0;
+              }
+              li {
+                 display: inline;
+              }
+
+              li:not(:first-child){
+                  margin-left: 0.75rem;
+              }
+            `}</style>
+```
+component 아래에 jsx를 추가하면
+해당 컴포넌트에게만 적용되는 css를 지정할 수 있다.
