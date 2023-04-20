@@ -70,4 +70,13 @@ function App({ Component, pageProps }) {
 export default App;
 ```
 
+##### 3. CSS
+styles/globals.css
+```javascript
+    body {
+    font-family: Arial, sans-serif;
+}
+```
+_app.js에서 임포트 해주면 적용된다.
+
 
