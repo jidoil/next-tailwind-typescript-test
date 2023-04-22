@@ -13,9 +13,6 @@ function FirstPost({ post }){
     console.log("First Post", post)
     return (
         <>
-            <Head>
-                <title>{post.title} - My Blog</title>
-            </Head>
             <main>
                 <h1>{post.title}</h1>
                   <article dangerouslySetInnerHTML={{__html: post.body}} />
