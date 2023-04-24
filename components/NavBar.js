@@ -32,6 +32,9 @@ function NavBar() {
                 <Navbar.Link href="/camps">
                     부트캠프 코스
                 </Navbar.Link>
+                <Navbar.Link href="/makeNewCamp">
+                    부트캠프 추가
+                </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     )
