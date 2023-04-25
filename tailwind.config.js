@@ -6,6 +6,7 @@ module.exports = {
     "./node_modules/flowbite-react/**/*.js",
     "./pages/**/*.{ts,tsx}",
     "./public/**/*.html",
+    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
   plugins: [
     require("flowbite/plugin")
