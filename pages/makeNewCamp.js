@@ -1,10 +1,11 @@
 import {useState} from "react";
 
-function MakeNewCamp() {
+
+function MakeNewCamp({ camps }) {
     console.log('About Render')
     const [formData, setFormData] = useState({});
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const form = event.target;
@@ -18,8 +19,22 @@ function MakeNewCamp() {
         // JSON 데이터를 상태에 저장 또는 서버로 전송 등의 작업 수행
         setFormData(jsonData);
 
+        const response = await fetch('/api/addCamp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(jsonData),
+        });
+
+        if (response.ok) {
+            alert('Form data saved successfully');
+        } else {
+            alert('Error saving form data');
+        }
     };
     console.log(formData)
+    console.log(camps)
 
     return (
         <>

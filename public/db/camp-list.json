@@ -1,0 +1,18 @@
+{
+  "bootcamp-name": "게리킴의 행복 프론트엔드",
+  "frontend-checkbox-list": "frontend",
+  "bootcamp-cost": "10000001",
+  "cost-kdigital-checkbox-list": "kdigital",
+  "bootcamp-address": "서울시 동대문구 청량리동",
+  "onoff-checkbox-list": "online",
+  "bootcamp-start-date": "1984-01-01",
+  "bootcamp-end-date": "1984-01-01",
+  "bootcamp-length": "6개월",
+  "parttime-checkbox-list": "파트타임",
+  "course-type": "onlinelive",
+  "project-type": "team",
+  "host": "천공TV",
+  "condition": "아무나",
+  "pre-requisite": "없음",
+  "tuition": "interview"
+}
