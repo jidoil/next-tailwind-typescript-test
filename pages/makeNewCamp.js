@@ -33,8 +33,7 @@ function MakeNewCamp({ camps }) {
             alert('Error saving form data');
         }
     };
-    console.log(formData)
-    console.log(camps)
+
 
     return (
         <>
