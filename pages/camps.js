@@ -1,8 +1,19 @@
-import NavBar from "../components/NavBar";
-import Head from "next/head";
 
-function CampsPage() {
-    console.log('About Render')
+import { useState, useEffect } from 'react';
+import {getCamp} from "./api/getCamp";
+
+export async function getStaticProps() {
+    const campData = await getCamp();
+
+    return {
+        props: { campData }
+    }
+}
+    function CampsPage({ campData }) {
+        const [data, setData] = useState([]);
+        useEffect(() => {
+            setData(campData)
+        })
     return (
         <>
             <main>
@@ -49,150 +60,159 @@ function CampsPage() {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            애플 아카데미
-                        </th>
-                        <td className="px-6 py-4">
-                            프론트엔드
-                        </td>
-                        <td className="px-6 py-4">
-                            모집중
-                        </td>
-                        <td className="px-6 py-4">
-                            무료
-                        </td>
-                        <td className="px-6 py-4">
-                            서울, 종로
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-3-21
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-4-3
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-12-31
-                        </td>
-                        <td className="px-6 py-4">
-                            6개월
-                        </td>
-                        <td className="px-6 py-4">
-                            풀타임
-                        </td>
-                        <td className="px-6 py-4">
-                            월~금
-                        </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            SSAFY
-                        </th>
-                        <td className="px-6 py-4">
-                            프론트엔드
-                        </td>
-                        <td className="px-6 py-4">
-                            모집중
-                        </td>
-                        <td className="px-6 py-4">
-                            무료
-                        </td>
-                        <td className="px-6 py-4">
-                            서울, 종로
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-3-21
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-4-3
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-12-31
-                        </td>
-                        <td className="px-6 py-4">
-                            6개월
-                        </td>
-                        <td className="px-6 py-4">
-                            풀타임
-                        </td>
-                        <td className="px-6 py-4">
-                            월~금
-                        </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            소프트웨어 마에스트로
-                        </th>
-                        <td className="px-6 py-4">
-                            프론트엔드
-                        </td>
-                        <td className="px-6 py-4">
-                            모집중
-                        </td>
-                        <td className="px-6 py-4">
-                            무료
-                        </td>
-                        <td className="px-6 py-4">
-                            서울, 종로
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-3-21
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-4-3
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-12-31
-                        </td>
-                        <td className="px-6 py-4">
-                            6개월
-                        </td>
-                        <td className="px-6 py-4">
-                            풀타임
-                        </td>
-                        <td className="px-6 py-4">
-                            월~금
-                        </td>
-                    </tr>
-                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            42Seoul
-                        </th>
-                        <td className="px-6 py-4">
-                            프론트엔드
-                        </td>
-                        <td className="px-6 py-4">
-                            모집중
-                        </td>
-                        <td className="px-6 py-4">
-                            무료
-                        </td>
-                        <td className="px-6 py-4">
-                            서울, 종로
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-3-21
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-4-3
-                        </td>
-                        <td className="px-6 py-4">
-                            2023-12-31
-                        </td>
-                        <td className="px-6 py-4">
-                            6개월
-                        </td>
-                        <td className="px-6 py-4">
-                            풀타임
-                        </td>
-                        <td className="px-6 py-4">
-                            월~금
-                        </td>
-                    </tr>
+
+                    {data.map((item, index) => (
+                        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={index}>
+                            <th scope="row"  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{item['bootcamp-name']}</th>
+                            <td className="px-6 py-4">test</td>
+                        </tr>
+                    ))}
+
+
+                    {/*<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">*/}
+                    {/*    <th scope="row"*/}
+                    {/*        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">*/}
+                    {/*        애플 아카데미*/}
+                    {/*    </th>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        프론트엔드*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        모집중*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        무료*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        서울, 종로*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-3-21*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-4-3*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-12-31*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        6개월*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        풀타임*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        월~금*/}
+                    {/*    </td>*/}
+                    {/*</tr>*/}
+                    {/*<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">*/}
+                    {/*    <th scope="row"*/}
+                    {/*        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">*/}
+                    {/*        SSAFY*/}
+                    {/*    </th>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        프론트엔드*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        모집중*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        무료*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        서울, 종로*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-3-21*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-4-3*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-12-31*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        6개월*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        풀타임*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        월~금*/}
+                    {/*    </td>*/}
+                    {/*</tr>*/}
+                    {/*<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">*/}
+                    {/*    <th scope="row"*/}
+                    {/*        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">*/}
+                    {/*        소프트웨어 마에스트로*/}
+                    {/*    </th>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        프론트엔드*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        모집중*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        무료*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        서울, 종로*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-3-21*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-4-3*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-12-31*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        6개월*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        풀타임*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        월~금*/}
+                    {/*    </td>*/}
+                    {/*</tr>*/}
+                    {/*<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">*/}
+                    {/*    <th scope="row"*/}
+                    {/*        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">*/}
+                    {/*        42Seoul*/}
+                    {/*    </th>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        프론트엔드*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        모집중*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        무료*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        서울, 종로*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-3-21*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-4-3*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        2023-12-31*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        6개월*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        풀타임*/}
+                    {/*    </td>*/}
+                    {/*    <td className="px-6 py-4">*/}
+                    {/*        월~금*/}
+                    {/*    </td>*/}
+                    {/*</tr>*/}
                     </tbody>
                 </table>
             </div>
